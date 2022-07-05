@@ -1,19 +1,10 @@
 import { Router } from "express";
+import { usersController } from "./controllers/usersController.js";
 
 const routes = Router();
 
-const db = [];
+routes.get("/users", usersController.getUsers);
 
-routes.get("/users", (req, res) => {
-  return res.status(200).json(db);
-});
-
-routes.post("/users", (req, res) => {
-  const { name } = req.body;
-  db.push(name);
-  return res
-    .status(201)
-    .json({ "mensagem:": `Usuário ${name} criado com sucesso` });
-});
+routes.post("/users", usersController.createUser);
 
 export { routes };
