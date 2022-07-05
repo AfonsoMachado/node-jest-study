@@ -1,7 +1,8 @@
-import { db } from "../database.js";
+import { db } from "../database";
+import { Request, Response } from "express";
 
-const usersController = {
-  createUser(req, res) {
+export class UsersController {
+  createUser(req: Request, res: Response): Response {
     const { name } = req.body;
 
     if (name.length < 1)
@@ -11,11 +12,9 @@ const usersController = {
     return res
       .status(201)
       .json({ "mensagem:": `Usuário ${name} criado com sucesso` });
-  },
+  }
 
-  getUsers(req, res) {
+  getUsers(req: Request, res: Response): Response {
     return res.status(200).json(db);
-  },
-};
-
-export { usersController };
+  }
+}
