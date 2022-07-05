@@ -11,7 +11,7 @@ export class UsersController {
     db.push(name);
     return res
       .status(201)
-      .json({ "mensagem:": `Usuário ${name} criado com sucesso` });
+      .json({ mensagem: `Usuário ${name} criado com sucesso` });
   }
 
   getUsers(req: Request, res: Response): Response {
